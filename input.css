@@ -1,0 +1,67 @@
+@tailwind base;
+/* The @tailwind base; directive includes base styles that provide a foundational reset for the browser's default styles.
+This is where you can define things like typography rules (such as font families, sizes, and line heights), global box-sizing settings, and basic styling for HTML elements like headings, paragraphs, and lists.
+The base styles are typically applied directly to HTML elements without any classes, ensuring a consistent starting point across your project. */
+@tailwind components;
+/* The @tailwind components; directive is where you can define styles for reusable components or UI elements.
+These styles are often specific to certain components like buttons, cards, forms, etc.
+Instead of writing custom CSS for each component, you can use utility classes from Tailwind to create and style components.
+For example, you might define a .btn class in this section that encapsulates styling for buttons, which you can then apply throughout your project. */
+@tailwind utilities;
+/*  The @tailwind utilities;It provides a large set of utility classes that you can apply directly to HTML elements to achieve various styling, layout, and behavior changes.
+These utility classes are highly customizable and allow you to rapidly build and style your interface without writing custom CSS.
+Examples of utility classes include those for margins, padding, typography, colors, flexbox/grid layout, and more. */
+/* -
+-
+-
+-
+-
+-
+- */
+/* NOTE:::::::::::::::::::::::::::::::: @layer directive */
+@layer base {
+  h1 {
+    font-size: 3rem;
+  }
+  /* The base styles are directly applied to html elements. */
+  /* This will directly apply font-size of 3 rem to h1 tag. No need to use any utility classes. */
+  h2 {
+    @apply text-3xl;
+    /* In Tailwind CSS, the @apply directive is used to apply a set of utility classes defined in your CSS to a specific element.
+    It allows you to create and reuse custom utility classes by combining existing utility classes into a single class name. */
+    /* -
+-
+-
+-
+ */ /* NOTE:::::::::::::::::::::::::: @apply directive */
+    /* @apply 128rem; */
+    /* @apply directive in Tailwind CSS, you generally cannot use arbitrary values like 128rem.
+    The @apply directive is designed to work with existing utility classes that Tailwind provides out of the box or with custom utility classes that you define within your own Tailwind configuration.
+    When you use @apply, you're essentially combining existing utility classes to create a new class.
+    These existing utility classes define specific styles, such as font sizes (text-3xl), colors (text-white), padding/margin (p-4), etc. */
+  }
+}
+
+@layer components {
+  /* Basically in layer components, you can create your custom UI components that are reusable like buttons. */
+  .custom-btn {
+    @apply px-4 py-2 bg-blue-500 text-white font-semibold rounded-md
+        /*then we can use .custom-btn class in our HTML file like this:
+        <button class="custom-btn">Click me</button> */;
+  }
+}
+/*  NOTE:::::::::: */
+/* We can create custom classess like this and use it in our html elements as a class. */
+.content-area {
+  @apply bg-green-200 px-4 text-center mx-auto;
+  height: theme("spacing.128");
+  /* this height is put in this way because, we have extended this spacing of  128 in config file. */
+}
+
+/*::::::::::::::::::::::::::::::  NOTE        :::::::::: */
+/* this is doing what; when the width reaches lg and greater than lg, do this   */
+/* @media screen(lg) {
+  body {
+    @apply text-red-600;
+  }
+} */
